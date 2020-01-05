@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<style>
+		.wrap{max-width: 500px;margin: auto;padding: 30px;border: 1px solid #ddd;border-radius: 10px;box-shadow: 6px 12px 18px 0 #aaa}
+		.img img{max-width: 100%;height: auto;}
+		.item, .order{text-align: center;}
+		.item div p{font-size: 20px;font-weight: 600;}
+		.order{border-top: 1px solid #ddd;}
+		.order p span{display: inline-block;width: 100px;}
+		.order .ip{padding: 6px; width: 220px;outline: none;}
+		.order .ip:focus{border-color: red;}
+		.order select.ip{width: 232px;height: 30px;}
+		.btn_order{margin: 16px auto;width: 144px;height: 42px;background-color: #000;color: #fff;font-size: 16px;border: 1px solid #000;border-radius: 6px;}
+		.btn_order:hover, .btn_order:focus{background-color: #fff;color: #000;}
+	</style>
+	<title>상품소개</title>
+</head>
+<body>
+	<div class="wrap">
+		<div class="img">
+			<img src="http://www.ilovepc.co.kr/news/photo/201806/19411_35190_290.jpg" alt="빔프로젝트">
+		</div>
+		<div class="item">
+			<div>
+				<h1>미니빔 프로젝터</h1>
+				<p>가격: 100,000원/개</p>
+			</div>
+			<p>스마트폰처럼 한손에 들어오는 소형 프로젝터로 휴대가 간편해<br>가정은 물론이고 캠핑 등 야외 활동에 사용하기 좋습니다</p>	
+		</div>
+		<div class="order">
+			<h2>주문하기</h2>
+			<div class="form_wrap">
+				<p>
+					<span>주문자 성함:</span>
+					<input type="text" class="ip">
+				</p>
+				<p>
+					<span>수량:</span>
+					<select class="ip">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</p>
+				<p>
+					<span>주소:</span>
+					<input type="text" class="ip">
+				</p>
+				<p>
+					<span>전화번호:</span>
+					<input type="text" class="ip">
+				</p>
+			</div>
+			<button type="submit" class="btn_order">주문하기</button>
+		</div>
+	</div>
+</body>
+</html>
