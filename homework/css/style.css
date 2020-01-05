@@ -1,0 +1,15 @@
+@charset "UTF-8";
+body{font-family: 'Noto Sans KR', sans-serif;color: #333;}
+.wrap{max-width: 500px;margin: 20px auto;padding: 30px;border: 1px solid #ddd;border-radius: 10px;box-shadow: 6px 12px 18px 0 #aaa}
+.img img{max-width: 100%;height: auto;}
+.item, .order{text-align: center;}
+.item h1{font-family: 'Do Hyeon';font-size: 40px;margin: 0;}
+.item div p{font-size: 20px;font-weight: 600;}
+.order{border-top: 1px solid #ddd;}
+.order h2{font-family: 'Gaegu';font-size: 30px;}
+.order p span{display: inline-block;width: 100px;}
+.order .ip{padding: 6px; width: 220px;outline: none;}
+.order .ip:focus{border-color: red;}
+.order select.ip{width: 232px;height: 30px;}
+.btn_order{margin: 16px auto;width: 144px;height: 42px;background-color: #000;color: #fff;font-size: 16px;border: 1px solid #000;border-radius: 6px;}
+.btn_order:hover, .btn_order:focus{background-color: #fff;color: #000;}
