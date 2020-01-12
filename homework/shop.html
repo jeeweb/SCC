@@ -6,7 +6,32 @@
 	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Gaegu|Noto+Sans+KR&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<title>상품소개</title>
+	<script type="text/javascript">
+		
+		function order() {
+			var phoneRule = /[01](0|1|6|7|8|9)[-](\d{4}|\d{3})[-]\d{4}$/g;
+			
+			if ($('#ipUserName').val() == '') {
+				alert('이름을 입력해주세요');
+				$('#ipUserName').focus();
+			} else if( $('#selectNum').val() == '') {
+				alert('수량을 선택해주세요');
+				$('#selectNum').focus();
+			} else if( $('#ipUserAddress').val() == '') {
+				alert('주소를 입력해주세요');
+				$('#ipUserAddress').focus();
+			} else if( $('#ipUserPhone').val() == '') {
+				alert('전화번호를 입력해주세요');
+				$('#ipUserPhone').focus();
+			} else if(!phoneRule.test($('#ipUserPhone').val())) {
+				alert('휴대폰번호는 010-0000-0000 형식으로 입력해주세요');
+			} else{
+				alert('주문완료!')
+			}			
+		}
+	</script>
 </head>
 <body>
 	<div class="wrap">
@@ -25,11 +50,12 @@
 			<div class="form_wrap">
 				<p>
 					<span>주문자 성함:</span>
-					<input type="text" class="ip">
+					<input type="text" class="ip" id="ipUserName">
 				</p>
 				<p>
 					<span>수량:</span>
-					<select class="ip">
+					<select class="ip" id="selectNum">
+						<option value selected>수량을 선택하세요</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -39,14 +65,14 @@
 				</p>
 				<p>
 					<span>주소:</span>
-					<input type="text" class="ip">
+					<input type="text" class="ip" id="ipUserAddress">
 				</p>
 				<p>
 					<span>전화번호:</span>
-					<input type="text" class="ip">
+					<input type="text" class="ip" id="ipUserPhone" placeholder="010-0000-0000">
 				</p>
 			</div>
-			<button type="submit" class="btn_order">주문하기</button>
+			<button type="submit" onclick="order()" class="btn_order" id="btnOrder">주문하기</button>
 		</div>
 	</div>
 </body>

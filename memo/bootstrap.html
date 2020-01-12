@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
 		
@@ -29,6 +29,9 @@
         width: 900px;
         margin: auto;
       }
+      #posting-box{
+        display: none;
+      }
       .comment {
         color: blue;
         font-weight: bold;
@@ -40,7 +43,17 @@
         border-radius: 5px;
       }
     </style>
-
+    <script>
+        function openclose(){
+          if ($('#posting-box').css('display') == 'block') {
+            $('#posting-box').hide();
+            $('#btn-posting-box').text('포스팅박스 열기');
+          } else {
+            $('#posting-box').show();
+            $('#btn-posting-box').text('포스팅박스 닫기');
+          }
+        }
+    </script>
   </head>
   <body>
     <div class="wrap">
@@ -49,23 +62,23 @@
         <p class="lead">중요한 링크를 저장해두고, 나중에 볼 수 있는 공간입니다.</p>
         <hr class="my-4">
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">포스팅박스 열기</a>
+          <a class="btn btn-primary btn-lg" id="btn-posting-box" onclick="openclose()" href="#" role="button">포스팅박스 열기</a>
         </p>
       </div>
-
-      <form class="input_box">
-        <div class="form-group">
-          <label for="exampleInputUrl">아티클 URL</label>
-          <input type="text" class="form-control" id="exampleInputUrl" aria-describedby="emailHelp">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">간단 코멘트</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">기사저장</button>
-      </form>
-
-      <div class="card-columns">
+      <div id="posting-box">
+        <form class="input_box" >
+          <div class="form-group">
+            <label for="posting-url">아티클 URL</label>
+            <input type="text" class="form-control" id="posting-url">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">간단 코멘트</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+          </div>
+          <button type="button" onclick="hey()" class="btn btn-primary">기사저장</button>
+        </form>
+      </div>
+      <div id="cards-box" class="card-columns">
         <div class="card">
           <img class="card-img-top" src="https://www.eurail.com/content/dam/images/eurail/Italy%20OCP%20Promo%20Block.adaptive.767.1535627244182.jpg" alt="Card image cap">
           <div class="card-body">
