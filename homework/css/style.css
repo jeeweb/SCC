@@ -1,5 +1,8 @@
 @charset "UTF-8";
+
 body{font-family: 'Noto Sans KR', sans-serif;color: #333;}
+table{border-collapse: collapse}
+
 .wrap{max-width: 500px;margin: 20px auto;padding: 30px;border: 1px solid #ddd;border-radius: 10px;box-shadow: 6px 12px 18px 0 #aaa}
 .img img{max-width: 100%;height: auto;}
 .item, .order{text-align: center;}
@@ -13,3 +16,10 @@ body{font-family: 'Noto Sans KR', sans-serif;color: #333;}
 .order select.ip{width: 232px;height: 30px;}
 .btn_order{margin: 16px auto;width: 144px;height: 42px;background-color: #000;color: #fff;font-size: 16px;border: 1px solid #000;border-radius: 6px;}
 .btn_order:hover, .btn_order:focus{background-color: #fff;color: #000;}
+
+.user_table{max-height: 410px;overflow: auto;margin-top: 64px;}
+.user_table table{border-top: 2px solid #333;margin: 0 auto;width: 70%;table-layout: fixed;text-align: center;}
+.user_table table tr{border-bottom: 1px solid #333}
+.user_table table tr:last-child{border-bottom: 2px solid #333}
+.user_table table th{padding :10px 0}
+.user_table table td{padding: 10px 0;font-size: 14px}

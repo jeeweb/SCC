@@ -28,8 +28,61 @@
 			} else if(!phoneRule.test($('#ipUserPhone').val())) {
 				alert('휴대폰번호는 010-0000-0000 형식으로 입력해주세요');
 			} else{
-				alert('주문완료!')
+				alert('주문완료!');
+				orderCompleted();
 			}			
+		}
+
+		function userTable(userInfo) {
+			return (
+				'<table>'
+				+ '<colgroup>'
+				+	'<col>'
+				+	'<col>'
+				+	'<col>'
+				+	'<col>'
+				+ '</colgroup>'
+				+ '<thead>'
+				+	'<tr>'
+				+		'<th scope="col">이름</th>'
+				+		'<th scope="col">수량</th>'
+				+		'<th scope="col">주소</th>'
+				+		'<th scope="col">전화번호</th>'
+				+	'</tr>'
+				+ '</thead>'
+				+ '<tbody class="row">'
+				+ '</tbody>'
+				+ '</table>'
+			)
+		}
+
+		function getUser(userInfo) {
+			return(
+				'<tr>'
+				+	'<td>' + userInfo['name'] + '</td>'
+				+	'<td>' + userInfo['count'] + '</td>'
+				+	'<td>' + userInfo['address'] + '</td>'
+				+	'<td>' + userInfo['phone'] + '</td>'
+				+'</tr>'
+			)
+		}
+
+		function orderCompleted() {
+			$.ajax({
+				type: "GET",
+				url: "http://spartacodingclub.shop/order",
+				data: {},
+				success: function(response) {
+					var $userTable = $('.user_table');
+					var userInfo = response['orders'];
+
+					$userTable.append(userTable(userInfo));
+
+					userInfo.forEach(
+						userInfo => $('.row').append(getUser(userInfo))
+					)
+				}
+			})
 		}
 	</script>
 </head>
@@ -75,5 +128,6 @@
 			<button type="submit" onclick="order()" class="btn_order" id="btnOrder">주문하기</button>
 		</div>
 	</div>
+	<div class="user_table"></div>
 </body>
 </html>

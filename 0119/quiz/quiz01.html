@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+    <title>JQuery 연습하고 가기!</title>
+
+    <!-- JQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <style type="text/css">
+      div.question-box {
+        margin: 10px 0 20px 0;
+      }
+    </style>
+
+    <script>
+
+      function getLi(parsed) {
+        return(
+          '<li>'
+          + parsed['name']
+          + ' : '
+          + parsed['concentration']
+          + '</li>'
+        )
+      }
+
+      function q1() {
+        $.ajax({
+          type: "GET",
+          url: "http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/RealtimeCityAir/1/99",
+          data: {},
+          success: function(response){
+            var namesQ1 = $('#names-q1');
+            var microDustResult = response['RealtimeCityAir']['row'];
+            var microDustParsed = [];
+
+            namesQ1.empty();
+
+            microDustResult.forEach( //각각에 대해서 모두, 순서상관없이 반복
+              currentResult => namesQ1.append(
+                getLi({
+                  'name' : currentResult['MSRSTE_NM'],
+                  'concentration' : currentResult['IDEX_MVL']
+                })
+              )
+            )
+
+            /*
+            for (var i = 0; i < microDustResult.length; i++) {
+              var currentResult = microDustResult[i];
+
+              namesQ1.append(getLi({
+                'name' : currentResult['MSRSTE_NM'],
+                'concentration' : currentResult['IDEX_MVL']
+              }))
+            }
+            */
+          }
+        })
+      }
+    </script>
+
+  </head>
+  <body>
+    <h1>JQuery+Ajax의 조합을 연습하자!</h1>
+
+    <hr/>
+
+    <div class="question-box">
+      <h2>1. 서울시 OpenAPI(실시간 미세먼지 상태)를 이용하기</h2>
+      <p>모든 구의 미세먼지를 표기해주세요</p>
+      <p>업데이트 버튼을 누를 때마다 지웠다 새로 씌여져야 합니다.</p>
+      <button onclick="q1()">업데이트</button>
+      <ul id="names-q1">
+        
+      </ul>
+    </div>
+  </body>
+</html>
